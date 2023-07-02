@@ -75,7 +75,7 @@ session_start();
         }
 
         .logCont {
-            background-color: #fefefe;
+            background-color: #fffbff;
             border-radius: 1em;
             padding: 5px;
             box-shadow: 5px 10px 8px #888888;
@@ -94,14 +94,16 @@ session_start();
 
 </head>
 
-<body class="container " style="background-color:#f0f1f2;">
+<body class="container " style="background-color:#e1bc29;">
     <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: 100vh;  min-width: 50vw;">
         <div class="row logCont">
-            <div class="col-md-12 p-0 " style=" min-width: 50vw;">
+            <div class="col-md-12 p-0 " style=" min-width: 30vw;">
+            
                 <form method="post" id="log-In">
                     <div class="row text-center justify-content-center">
                         <div class="col-md-6">
-                            <img src="pcn.png" alt="" class="" style="max-width:200px;padding-top:10px">
+                            <img src="logo.png" alt="" class="" style="max-width:200px;">
+                            <h4>GOLD SYSTEM</h4>
                         </div>
                     </div>
 
@@ -127,18 +129,14 @@ session_start();
 
                 </form>
 
-                <h6>No Accout Yet?
-                    <a href="" data-toggle="modal" data-target="#myModal">Sign Up</a>
-                    here
-                </h6>
+          
 
 
             </div>
         </div>
     </div>
     <a id="promptLog" data-toggle="modal" data-target="#myModal2" hidden></a>
-    <?php include 'include/signUp.html' ?>
-    <?php include 'include/adminPrompt.html' ?>
+
 
 
     <script>

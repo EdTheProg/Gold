@@ -9,6 +9,7 @@ session_start();
     <?php
     include 'include/head.html';
     ?>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
 
     <style>
         button {
@@ -151,7 +152,7 @@ session_start();
                     url: "include/processLogin.php", // Replace with the actual PHP script URL
                     data: $(this).serialize(),
                     success: function(response) {
-
+                        /*
                         var responseObject;
                         try {
                             responseObject = JSON.parse(response);
@@ -183,7 +184,8 @@ session_start();
                         } else {
                             document.getElementById("em").innerHTML = "Username Does Not Exist";
                         }
-
+                        */
+                       alert(response);
                     },
                 });
             });

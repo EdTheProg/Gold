@@ -9,7 +9,7 @@ session_start();
     <?php
     include 'include/head.html';
     ?>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+    
 
     <style>
         button {
@@ -144,47 +144,16 @@ session_start();
         $(document).ready(function() {
 
             $("#log-In").on("submit", function(event) {
+                alert("1");
                 event.preventDefault(); // Prevent default form submission
-
+                
                 // Perform AJAX request
                 $.ajax({
                     type: "POST",
                     url: "include/processLogin.php", // Replace with the actual PHP script URL
                     data: $(this).serialize(),
                     success: function(response) {
-                        /*
-                        var responseObject;
-                        try {
-                            responseObject = JSON.parse(response);
-                        } catch (error) {
-                            console.error("Error parsing JSON: " + error);
-                            return; // Stop further execution
-                        }
-
-                        var res = responseObject.res;
-                        var approverRole = responseObject.approver;
-
-                        if (res == "Match") {
-                           
-                            if (approverRole == 1) {
                         
-                                setTimeout(function() {
-                                    document.getElementById("promptLog").click();
-                                }, 3000);
-
-                            } else {
-                                setTimeout(function() {
-                                    window.location.href = 'index.php';
-                                }, 3000);
-                                
-                            }
-
-                        } else if (res == "Unmatch") {
-                            document.getElementById("em").innerHTML = "Incorrect Username/Password";
-                        } else {
-                            document.getElementById("em").innerHTML = "Username Does Not Exist";
-                        }
-                        */
                        alert(response);
                     },
                 });

@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /Gold
+
+
+
+
+
+
+RewriteRule ^login login.php [NC,L]
+
+

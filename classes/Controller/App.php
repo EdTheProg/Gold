@@ -15,7 +15,8 @@ class App
 
   
     public function sessionsFunction(){
-        session_name("Gold");
+        //session_destroy();
+        //session_name("Gold");
         session_start();
         date_default_timezone_set('Asia/Manila');  
         if (isset($_GET['logout'])){
@@ -35,13 +36,13 @@ class App
     public function checkSessionForLogin()
     {
         if (isset($_SESSION['id'])) {
-            header('Location: /Gold/Dashboard');
+            header('Location: /FMF/Gold/Dashboard');
         }
     }
     public function checkSessionForPages()
     {
         if (!isset($_SESSION['id'])) {
-            header('Location: /Gold/login');
+            header('Location: /FMF/Gold/login');
         }
     }
 

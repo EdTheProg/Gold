@@ -3,9 +3,14 @@ RewriteBase /Gold
 
 
 
+RewriteRule ^login/([a-zA-Z0-9_-]+)$  php/login/login.php?branch=$1 [NC,L]\
 
 
+RewriteRule ^Dashboard  php/Dashboard.php?type=Dashboard [NC,L]
+RewriteRule ^Sangla php/Dashboard.php?type=Sangla [NC,L]
+RewriteRule ^Patubo  php/Dashboard.php?type=Patubo [NC,L]
+RewriteRule ^Redeem  php/Dashboard.php?type=Redeem [NC,L]
 
-RewriteRule ^login login.php [NC,L]
+
 
 

@@ -1,5 +1,15 @@
 <?php
-session_start();
+spl_autoload_register(function ($class) {
+  include '../../classes/' . $class . '.php';
+});
+
+$app= new Controller\App();
+
+$app->sessionsFunction();
+$app->checkSessionForLogin();
+
+$_SESSION['branch_id']= $_GET['branch'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +17,7 @@ session_start();
 <head>
     <title>Login</title>
     <?php
-    include 'include/head.html';
+    include '../../include/head.html';
     ?>
     
 
@@ -96,6 +106,8 @@ session_start();
 </head>
 
 <body class="container " style="background-color:#e1bc29;">
+
+    
     <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: 100vh;  min-width: 50vw;">
         <div class="row logCont">
             <div class="col-md-12 p-0 " style=" min-width: 30vw;">
@@ -103,7 +115,7 @@ session_start();
                 <form method="post" id="log-In">
                     <div class="row text-center justify-content-center">
                         <div class="col-md-6">
-                            <img src="logo.png" alt="" class="" style="max-width:200px;">
+                            <img src="../assets/logo/logo.png" alt="" class="" style="max-width:200px;">
                             <h4>GOLD SYSTEM</h4>
                         </div>
                     </div>
@@ -144,14 +156,18 @@ session_start();
         $(document).ready(function() {
 
             $("#log-In").on("submit", function(event) {
-                alert("1");
+               
                 event.preventDefault(); // Prevent default form submission
                 
                 // Perform AJAX request
                 $.ajax({
                     type: "POST",
-                    url: "include/processLogin.php", // Replace with the actual PHP script URL
-                    data: $(this).serialize(),
+                    url: "../php/login/View/loginAuth.php", // Replace with the actual PHP script URL
+                    data: {
+                        username:document.getElementById('user').value,
+                        password:document.getElementById('pw').value
+
+                    },
                     success: function(response) {
                         
                        alert(response);

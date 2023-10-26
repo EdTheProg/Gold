@@ -16,7 +16,7 @@ class App
   
     public function sessionsFunction(){
         //session_destroy();
-        //session_name("Gold");
+        session_name("Gold");
         session_start();
         date_default_timezone_set('Asia/Manila');  
         if (isset($_GET['logout'])){
@@ -25,13 +25,7 @@ class App
             session_destroy();
             header('Location: /Gold/login/'.$branch);
         }
-        if (isset($_GET['comp'])){
-            //session_start();
-            $newCom = $_GET['comp'];
-            $_SESSION['company'] = filter_var($newCom, FILTER_SANITIZE_STRING);
-            sleep(3);
-            header('Location: Dashboard');  
-        }
+  
     }
     public function checkSessionForLogin()
     {

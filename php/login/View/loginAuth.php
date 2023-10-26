@@ -4,7 +4,7 @@ spl_autoload_register(function ($class) {
 	include '../../../classes/' . $class . '.php';
 });
 
-session_name("Gold");
+//session_name("Gold");
 session_start();
 use Controller\Login;
 

@@ -31,7 +31,7 @@ function Redeem(){
 }
 
 function logout(){
-    $output=" <li><a type ='button'href='Dashboard?logout=true'>Logout</a></li>";
+    $output=" <li><a type ='button' href='Dashboard?out=true'>Logout</a></li>";
     return $output;
 }
 ?>

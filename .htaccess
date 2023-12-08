@@ -3,7 +3,10 @@ RewriteBase /FMF/Gold
 
 
 
-RewriteRule ^login/([a-zA-Z0-9_-]+)$  php/login/login.php?branch=$1 [NC,L]\
+RewriteRule ^login/([a-zA-Z0-9_-]+)$  php/login/login_form.php?branch=$1 [NC,L]
+
+RewriteRule ^Logout  php/Dashboard.php?logout=true [NC,L]
+
 
 
 RewriteRule ^Dashboard  php/Dashboard.php?type=Dashboard [NC,L]

@@ -18,5 +18,5 @@ class Encrypt
     
 }
 
-$test= new Encrypt();
-echo $test->password_encrypt('1');
+//$test= new Encrypt();
+//echo $test->password_encrypt('1');

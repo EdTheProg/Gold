@@ -127,8 +127,8 @@ $app->checkSessionForLogin();
                 <form method="post" id="log-In">
                     <div class="row text-center justify-content-center">
                         <div class="col-md-6">
-                            <img src="logo.png" alt="" class="" style="max-width:200px;">
-                            <h1>Gold Sytem</h1>
+                            <img src="../assets/logo/logo.png" alt="" class="" style="max-width:200px;">
+                            <h4>GOLD SYSTEM</h4>
                             <small><h5><b>Branch:</b><?php echo $app->storeName ?></h5></small>
                             
                         </div>

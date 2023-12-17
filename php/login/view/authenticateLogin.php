@@ -12,6 +12,7 @@ use Controller\Login;
       try{
         $login = new Login();
         $login->AuthenticateLogin($_POST['username'],$_POST['pass']);
+        sleep(3);
 
       }
       catch (\Error $e){

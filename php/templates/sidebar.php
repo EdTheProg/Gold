@@ -93,6 +93,9 @@ require 'View/sidebar_functions.php';
   .three-level-list li ul li {
     margin-left: 20px;
   }
+  .time{
+    color: white;
+  }
 </style>
 
 <div class="wrapper">
@@ -101,9 +104,38 @@ require 'View/sidebar_functions.php';
  
     <div class="container logout" style="height: 80%">
       <a href="Dashboard"><img src="assets/logo/logo.png" alt="" class="" style="max-width: 200px" /></a>
-      <ul>
       <?php
         echo timeDisplay();
+      
+      ?>
+      <script>
+      function updateClock() {
+        const now = new Date();
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        const dayOfWeek = daysOfWeek[now.getDay()];
+        const dayOfMonth = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+
+        const dateString = `${dayOfWeek}, ${month} ${dayOfMonth}, ${year}`;
+        const timeString = `${hours}:${minutes}:${seconds}`;
+
+    
+
+        document.getElementById('time').innerHTML = `<div>${dateString}</div><div>${timeString}</div>`;
+      }
+      setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+      </script>
+      <ul>
+      <?php
         echo newSangla();
         echo Patubo();
         echo Redeem();

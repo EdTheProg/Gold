@@ -15,7 +15,7 @@ function Dashboard(){
 }
 function timeDisplay(){
     global $auth;
-    $output=" <li><a href='Sangla'>New Sangla</a></li>";
+    $output= "<h6 class='time' id='time'>00:00</h6>";
     return $output;
         
 }

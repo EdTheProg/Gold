@@ -103,6 +103,7 @@ require 'View/sidebar_functions.php';
       <a href="Dashboard"><img src="assets/logo/logo.png" alt="" class="" style="max-width: 200px" /></a>
       <ul>
       <?php
+        echo timeDisplay();
         echo newSangla();
         echo Patubo();
         echo Redeem();

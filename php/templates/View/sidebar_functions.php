@@ -13,6 +13,12 @@ function Dashboard(){
             return $output;
         
 }
+function timeDisplay(){
+    global $auth;
+    $output=" <li><a href='Sangla'>New Sangla</a></li>";
+    return $output;
+        
+}
 function newSangla(){
     global $auth;
 	$output=" <li><a href='Sangla'>New Sangla</a></li>";

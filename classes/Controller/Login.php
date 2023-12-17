@@ -47,6 +47,7 @@ class Login extends UserVerification
     public function resultGranted($user){
         $_SESSION['current_user_id']=$user[0]['id'];
         $_SESSION['current_user_name']=$user[0]['first_name'];
+        $_SESSION['time_on']=true;
     }
     
 }

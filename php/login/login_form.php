@@ -8,20 +8,34 @@ $app= new Controller\App();
 $app->sessionsFunction();
 $app->checkSessionForLogin();
 
-$_SESSION['branch_id']= $_GET['branch'];
+
+
+//if(!isset($_SESSION['branch'])){ // safeguard if login form is loaded
+    //$_SESSION['branch']=$_GET['branch'];
+//}
 
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Login</title>
-    <?php
-    include '../../include/head.html';
-    ?>
-    
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+  <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" defers></script> 
+  <!--<script src="../assets/additional_js/jquery.js" defer></script>-->
 
-    <style>
+
+  <link href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="../assets/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="../assets/fontawesome/css/solid.css" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<title><?php echo $app->web;?> | Log-In</title>
+</head>
+<style>
         button {
             text-transform: uppercase;
             background-color: rgb(96, 96, 232);
@@ -102,12 +116,10 @@ $_SESSION['branch_id']= $_GET['branch'];
         }
     </style>
 
-
-</head>
-
-<body class="container " style="background-color:#e1bc29;">
-
-    
+	<body class="container " style="background-color:#c5ab55;">
+        <script type="text/javascript">
+            //alert(<?php echo $_GET['branch']?>);
+        </script>
     <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: 100vh;  min-width: 50vw;">
         <div class="row logCont">
             <div class="col-md-12 p-0 " style=" min-width: 30vw;">
@@ -117,12 +129,14 @@ $_SESSION['branch_id']= $_GET['branch'];
                         <div class="col-md-6">
                             <img src="../assets/logo/logo.png" alt="" class="" style="max-width:200px;">
                             <h4>GOLD SYSTEM</h4>
+                            <small><h5><b>Branch:</b><?php echo $app->storeName ?></h5></small>
+                            
                         </div>
                     </div>
 
                     <div id="em"></div>
                     <div class="form-group">
-                        <label class="logLabels" for="user">UserName:</label><br>
+                        <label class="logLabels" for="user">UserId:</label><br>
                         <div class="text-center">
                             <input class="logInputs" type="text" id="user" name="user" placeholder="Enter username" required><br>
                         </div>
@@ -153,25 +167,58 @@ $_SESSION['branch_id']= $_GET['branch'];
 
 
     <script>
+
         $(document).ready(function() {
 
             $("#log-In").on("submit", function(event) {
-               
-                event.preventDefault(); // Prevent default form submission
                 
+                event.preventDefault(); // Prevent default form submission
+                var username = document.getElementById('user').value;
+                var pw = document.getElementById('pw').value;
+                
+                
+
                 // Perform AJAX request
+                
                 $.ajax({
                     type: "POST",
-                    url: "../php/login/View/loginAuth.php", // Replace with the actual PHP script URL
+                    url: "../php/login/view/authenticateLogin.php", // Replace with the actual PHP script URL
                     data: {
-                        username:document.getElementById('user').value,
-                        password:document.getElementById('pw').value
+                        username : username,
+                        pass: pw,
+                    },
+                    dataType: 'json',
+                    xhr:function (){                       
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function() {
+                            
+                            if (xhr.readyState === 4) {
 
-                    },
-                    success: function(response) {
+                                
+                                //alert(xhr.status);
+                                //console.log(xhr.responseText);
+
+                                if (xhr.status !== 200){
+                                    
+                                    if(xhr.status !== 401){
+                                        //error function to be executed here
+                                    }   
+                                    else{
+                                        alert('Wrong Username/Password');
+                                    }
+                                }
+                                else{
+                                    //alert(xhr.status);
+                                    window.location.href = "../Dashboard";
+                                }
+                               
+                            }
+                        };
+                         
+                        return xhr;
                         
-                       alert(response);
                     },
+                    
                 });
             });
         });

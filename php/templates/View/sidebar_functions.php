@@ -13,6 +13,12 @@ function Dashboard(){
             return $output;
         
 }
+function timeDisplay(){
+    global $auth;
+    $output=" <li><a href='Sangla'>New Sangla</a></li>";
+    return $output;
+        
+}
 function newSangla(){
     global $auth;
 	$output=" <li><a href='Sangla'>New Sangla</a></li>";
@@ -31,7 +37,7 @@ function Redeem(){
 }
 
 function logout(){
-    $output=" <li><a type ='button'href='Dashboard?logout=true'>Logout</a></li>";
+    $output=" <li><a type ='button' href='Logout'>Logout</a></li>";
     return $output;
 }
 ?>

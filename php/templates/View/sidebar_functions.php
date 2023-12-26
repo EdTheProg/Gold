@@ -15,7 +15,19 @@ function Dashboard(){
 }
 function timeDisplay(){
     global $auth;
-    $output= "<h6 class='time' id='time'>00:00</h6>";
+    $output= "<h6 class='time' id='time'></h6>";
+    return $output;
+        
+}
+function transactionTypeToggler(){
+    global $auth;
+
+    if($_SESSION['time_on']){
+        $output= "<li onclick = 'transactionType(0)' class = 'btn btn-danger'><a  id='timeTogler'>Time Off</a></li>";
+    }
+    else{
+        $output= "<li onclick = 'transactionType(1)'  class = 'btn btn-success'><a  id='timeTogler'>Time On</a></li>";
+    }
     return $output;
         
 }

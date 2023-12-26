@@ -106,9 +106,41 @@ require 'View/sidebar_functions.php';
       <a href="Dashboard"><img src="assets/logo/logo.png" alt="" class="" style="max-width: 200px" /></a>
       <?php
         echo timeDisplay();
+
       
       ?>
       <script>
+        function transactionType(type){
+          switch (type){
+            case 1:
+              var typeText ="STARTED";
+              break;
+            default:
+              var typeText ="ENDED";
+              break;
+          }
+          alert("TIME WILL BE NOW "+ typeText + "\n Reloading...");
+                    
+          $.ajax({
+              type: 'POST',
+              url: 'php/transactionType.php', // Replace with the actual path to your PHP script
+              data: {
+                  transactionType : type
+              },
+              success: function (response) {
+                
+
+                //setTimeout(function (){location.reload()},3000);
+                location.reload();
+                
+              },
+              error: function (xhr, status, error) {
+                // Handle errors if the PHP script execution fails
+                console.error('Error executing PHP script:', error);
+              }
+            });
+    
+        }
       function updateClock() {
         const now = new Date();
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -128,14 +160,22 @@ require 'View/sidebar_functions.php';
     
 
         document.getElementById('time').innerHTML = `<div>${dateString}</div><div>${timeString}</div>`;
+        setInterval(updateClock, 1000);
       }
-      setInterval(updateClock, 1000);
+      
 
-    // Initial call to display the clock immediately
-    updateClock();
+   
+    sessionType(<?php echo $_SESSION['time_on']?>);
+    function sessionType(type){
+      if(type){
+        updateClock();
+      }
+    
+    }
       </script>
       <ul>
       <?php
+        echo transactionTypeToggler();
         echo newSangla();
         echo Patubo();
         echo Redeem();

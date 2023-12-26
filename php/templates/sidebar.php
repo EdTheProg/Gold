@@ -119,7 +119,7 @@ require 'View/sidebar_functions.php';
               var typeText ="ENDED";
               break;
           }
-          alert("TIME WILL BE NOW "+ typeText + "\n Reloading...");
+          
                     
           $.ajax({
               type: 'POST',
@@ -130,7 +130,7 @@ require 'View/sidebar_functions.php';
               success: function (response) {
                 
 
-                //setTimeout(function (){location.reload()},3000);
+                alert("TIME WILL BE NOW "+ typeText + "\n Reloading...");
                 location.reload();
                 
               },

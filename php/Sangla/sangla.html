@@ -73,3 +73,20 @@
 
 
 </div>
+
+<a id = "setCustomerModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#setCustomer" >loadingtrigger</a>
+<?php include 'setcustomermodal.html'?>
+
+<script>
+
+        function test(){
+                $.ajax({
+                  type: 'POST',
+                  url: 'php/sangla/view/newSangla.php',
+                  data: { key1: 'value1', key2: 'value2' },
+                  success: function(response) {
+                    alert(response);
+                  }
+                });
+        }
+</script>

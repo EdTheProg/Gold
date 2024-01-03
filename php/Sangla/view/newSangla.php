@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
 use Controller\Login;
 
 
-echo "test";
+echo "test1";
 
 switch ($_SERVER['REQUEST_METHOD']) {
   case 'POST':
